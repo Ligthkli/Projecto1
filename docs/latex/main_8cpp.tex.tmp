@@ -1,0 +1,225 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+Include dependency graph for main.\+cpp:\+
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structProducto}{Producto}}
+\begin{DoxyCompactList}\small\item\em Representa un articulo disponible en el catalogo de la tienda. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structItemCarrito}{Item\+Carrito}}
+\begin{DoxyCompactList}\small\item\em Representa un producto que el cliente agrego al carrito de compras. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{main_8cpp_ac0aca0f34a52fbe7527a03517bc3347e}{mostrar\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Muestra el menu principal de la tienda en consola. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a76480249b8cced6b402a1a79dfb3ddb8}{mostrar\+Productos}} ()
+\begin{DoxyCompactList}\small\item\em Recorre e imprime todos los productos del catalogo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8cpp_a195c0074573d0bbdc27c57bfdfc5d5b1}{agregar\+Al\+Carrito}} ()
+\begin{DoxyCompactList}\small\item\em Permite al usuario seleccionar un producto y agregarlo al carrito de compras. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Punto de entrada del programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \doxymbox{\hyperlink{main_8cpp_abda359235687a3415aa39d666e94a19d}{MAX\+\_\+\+PRODUCTOS}} = 10
+\begin{DoxyCompactList}\small\item\em Capacidad maxima del catalogo. \end{DoxyCompactList}\item 
+const int \doxymbox{\hyperlink{main_8cpp_a9fd28452cfcea7f20f0caadadb06db59}{MAX\+\_\+\+CARRITO}} = 10
+\begin{DoxyCompactList}\small\item\em Capacidad maxima del carrito. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structProducto}{Producto}} \doxymbox{\hyperlink{main_8cpp_a22d80f23d74620a0635103eee516403e}{catalogo}} \+[\doxymbox{\hyperlink{main_8cpp_abda359235687a3415aa39d666e94a19d}{MAX\+\_\+\+PRODUCTOS}}]\+
+\begin{DoxyCompactList}\small\item\em Catalogo global de productos disponibles. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a503a2c72b2740a1d9221d5f25b51365b}{total\+Productos}} = 5
+\begin{DoxyCompactList}\small\item\em Numero de productos cargados en el catalogo. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structItemCarrito}{Item\+Carrito}} \doxymbox{\hyperlink{main_8cpp_a3a59dc08e2755cbdfb022f5a55dc303c}{carrito}} \+[\doxymbox{\hyperlink{main_8cpp_a9fd28452cfcea7f20f0caadadb06db59}{MAX\+\_\+\+CARRITO}}]\+
+\begin{DoxyCompactList}\small\item\em Arreglo global del carrito de compras. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a6add16214fd57bc897396286b6b3afc1}{total\+Carrito}} = 0
+\begin{DoxyCompactList}\small\item\em Numero de items actualmente en el carrito. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a195c0074573d0bbdc27c57bfdfc5d5b1}\index{main.cpp@{main.cpp}!agregarAlCarrito@{agregarAlCarrito}}
+\index{agregarAlCarrito@{agregarAlCarrito}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{agregarAlCarrito()}{agregarAlCarrito()}}
+{\footnotesize\ttfamily \label{main_8cpp_a195c0074573d0bbdc27c57bfdfc5d5b1} 
+void agregar\+Al\+Carrito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Permite al usuario seleccionar un producto y agregarlo al carrito de compras. 
+
+Flujo interno:\+
+\begin{DoxyEnumerate}
+\item Llama a \doxylink{main_8cpp_a76480249b8cced6b402a1a79dfb3ddb8}{mostrar\+Productos()} para mostrar el catalogo.
+\item Lee el ID del producto deseado desde stdin.
+\item Busca linealmente el producto en \textquotesingle{}catalogo\textquotesingle{}.
+\item Valida existencia y disponibilidad de stock.
+\item Lee la cantidad deseada y la valida contra el stock.
+\item Inserta el item en \textquotesingle{}carrito\textquotesingle{} y descuenta stock.
+\end{DoxyEnumerate}
+
+\begin{DoxyPrecond}{Precondition}
+total\+Carrito \texorpdfstring{$<$}{<} MAX\+\_\+\+CARRITO. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Si exitoso:\+ carrito\+[total\+Carrito]\+ queda inicializado, total\+Carrito se incrementa en 1 y el stock se reduce.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Complejidad tiempo:\+ O(n) donde n = total\+Productos (busqueda lineal) 
+
+Complejidad espacio:\+ O(1) 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Punto de entrada del programa. 
+
+Ejecuta un bucle do-\/while que muestra el menu principal y despacha la opcion elegida mediante un switch. El bucle termina cuando el usuario ingresa la opcion 0 (Salir).
+
+\begin{DoxyReturn}{Returns}
+0 si el programa termina correctamente.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Complejidad tiempo:\+ O(k \texorpdfstring{$\ast$}{*} n) donde k = iteraciones del menu, n = total\+Productos (por las funciones internas) 
+
+Complejidad espacio:\+ O(1) 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{main_8cpp_ac0aca0f34a52fbe7527a03517bc3347e}\index{main.cpp@{main.cpp}!mostrarMenu@{mostrarMenu}}
+\index{mostrarMenu@{mostrarMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mostrarMenu()}{mostrarMenu()}}
+{\footnotesize\ttfamily \label{main_8cpp_ac0aca0f34a52fbe7527a03517bc3347e} 
+void mostrar\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Muestra el menu principal de la tienda en consola. 
+
+Imprime las opciones disponibles para el usuario:\+ ver catalogo, agregar al carrito y salir. No recibe parametros ni retorna valor.
+
+\begin{DoxyPrecond}{Precondition}
+Ninguna. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+El menu es impreso en stdout. No modifica ninguna variable.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Complejidad tiempo:\+ O(1) \texorpdfstring{$\vert$}{|} Complejidad espacio:\+ O(1) 
+\end{DoxyNote}
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{main_8cpp_a76480249b8cced6b402a1a79dfb3ddb8}\index{main.cpp@{main.cpp}!mostrarProductos@{mostrarProductos}}
+\index{mostrarProductos@{mostrarProductos}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mostrarProductos()}{mostrarProductos()}}
+{\footnotesize\ttfamily \label{main_8cpp_a76480249b8cced6b402a1a79dfb3ddb8} 
+void mostrar\+Productos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Recorre e imprime todos los productos del catalogo. 
+
+Itera sobre el arreglo global \textquotesingle{}catalogo\textquotesingle{} desde el indice 0 hasta \textquotesingle{}total\+Productos -\/ 1\textquotesingle{}, mostrando id, nombre, precio y stock de cada producto.
+
+\begin{DoxyPrecond}{Precondition}
+total\+Productos \texorpdfstring{$>$}{>}= 0. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Los productos son impresos en stdout. No modifica datos.
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Complejidad tiempo:\+ O(n) donde n = total\+Productos 
+
+Complejidad espacio:\+ O(1) 
+\end{DoxyNote}
+Here is the caller graph for this function:\+
+% FIG 5
+
+
+\label{doc-var-members}
+\Hypertarget{main_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a3a59dc08e2755cbdfb022f5a55dc303c}\index{main.cpp@{main.cpp}!carrito@{carrito}}
+\index{carrito@{carrito}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{carrito}{carrito}}
+{\footnotesize\ttfamily \label{main_8cpp_a3a59dc08e2755cbdfb022f5a55dc303c} 
+\doxymbox{\hyperlink{structItemCarrito}{Item\+Carrito}} carrito\+[\doxymbox{\hyperlink{main_8cpp_a9fd28452cfcea7f20f0caadadb06db59}{MAX\+\_\+\+CARRITO}}]\+}
+
+
+
+Arreglo global del carrito de compras. 
+
+\Hypertarget{main_8cpp_a22d80f23d74620a0635103eee516403e}\index{main.cpp@{main.cpp}!catalogo@{catalogo}}
+\index{catalogo@{catalogo}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{catalogo}{catalogo}}
+{\footnotesize\ttfamily \label{main_8cpp_a22d80f23d74620a0635103eee516403e} 
+\doxymbox{\hyperlink{structProducto}{Producto}} catalogo\+[\doxymbox{\hyperlink{main_8cpp_abda359235687a3415aa39d666e94a19d}{MAX\+\_\+\+PRODUCTOS}}]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \{}
+\DoxyCodeLine{\ \ \ \ \{1,\ \textcolor{stringliteral}{"{}Laptop\ Gamer"{}},\ \ \ \ \ \ \ \ 18999.99,\ 5\},}
+\DoxyCodeLine{\ \ \ \ \{2,\ \textcolor{stringliteral}{"{}Mouse\ Inalambrico"{}},\ \ \ \ \ 449.00,\ 20\},}
+\DoxyCodeLine{\ \ \ \ \{3,\ \textcolor{stringliteral}{"{}Teclado\ Mecanico"{}},\ \ \ \ 1299.00,\ 12\},}
+\DoxyCodeLine{\ \ \ \ \{4,\ \textcolor{stringliteral}{"{}Monitor\ 24\(\backslash\)"{}\ FHD"{}},\ \ \ 4500.00,\ \ 8\},}
+\DoxyCodeLine{\ \ \ \ \{5,\ \textcolor{stringliteral}{"{}Audifonos\ Bluetooth"{}},\ \ 899.00,\ 15\},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Catalogo global de productos disponibles. 
+
+\Hypertarget{main_8cpp_a9fd28452cfcea7f20f0caadadb06db59}\index{main.cpp@{main.cpp}!MAX\_CARRITO@{MAX\_CARRITO}}
+\index{MAX\_CARRITO@{MAX\_CARRITO}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_CARRITO}{MAX\_CARRITO}}
+{\footnotesize\ttfamily \label{main_8cpp_a9fd28452cfcea7f20f0caadadb06db59} 
+const int MAX\+\_\+\+CARRITO = 10}
+
+
+
+Capacidad maxima del carrito. 
+
+\Hypertarget{main_8cpp_abda359235687a3415aa39d666e94a19d}\index{main.cpp@{main.cpp}!MAX\_PRODUCTOS@{MAX\_PRODUCTOS}}
+\index{MAX\_PRODUCTOS@{MAX\_PRODUCTOS}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_PRODUCTOS}{MAX\_PRODUCTOS}}
+{\footnotesize\ttfamily \label{main_8cpp_abda359235687a3415aa39d666e94a19d} 
+const int MAX\+\_\+\+PRODUCTOS = 10}
+
+
+
+Capacidad maxima del catalogo. 
+
+\Hypertarget{main_8cpp_a6add16214fd57bc897396286b6b3afc1}\index{main.cpp@{main.cpp}!totalCarrito@{totalCarrito}}
+\index{totalCarrito@{totalCarrito}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{totalCarrito}{totalCarrito}}
+{\footnotesize\ttfamily \label{main_8cpp_a6add16214fd57bc897396286b6b3afc1} 
+int total\+Carrito = 0}
+
+
+
+Numero de items actualmente en el carrito. 
+
+\Hypertarget{main_8cpp_a503a2c72b2740a1d9221d5f25b51365b}\index{main.cpp@{main.cpp}!totalProductos@{totalProductos}}
+\index{totalProductos@{totalProductos}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{totalProductos}{totalProductos}}
+{\footnotesize\ttfamily \label{main_8cpp_a503a2c72b2740a1d9221d5f25b51365b} 
+int total\+Productos = 5}
+
+
+
+Numero de productos cargados en el catalogo. 
+
